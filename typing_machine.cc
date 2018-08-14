@@ -30,7 +30,7 @@ void TypingMachine::LeftKey() {
 		ch = (this->left)->ch;
 		EraseKey();
 
-		TypingMachine *N = new TypingMachine;
+		TypingMachine *N = new TypingMachine();
 		if (this->right)
 		{
 			N->right = this->right;
@@ -75,7 +75,7 @@ void TypingMachine::RightKey() {
 
 bool TypingMachine::TypeKey(char key) {
 
-	if (key < 31 || key > 128)
+	if (key < 32 || key > 126)
 		return false;
 
 	TypingMachine *Max;
@@ -84,7 +84,7 @@ bool TypingMachine::TypeKey(char key) {
 
 	while (Max)
 	{
-		if (Max->left == NULL)
+		if (Max->left == nullptr)
 			break;
 		Max = Max->left;
 	}
@@ -98,7 +98,7 @@ bool TypingMachine::TypeKey(char key) {
 	if (count > 100)
 		return false;
 
-	TypingMachine *L = new TypingMachine;
+	TypingMachine *L = new TypingMachine();
 	L->ch = key;
 
 	if (this->left)
@@ -113,7 +113,7 @@ bool TypingMachine::TypeKey(char key) {
 	{
 		this->left = L;
 		L->right = this;
-		L->left = NULL;
+		L->left = nullptr;
 	}
 	return true;
 }
@@ -135,7 +135,7 @@ bool TypingMachine::EraseKey() {
 		else
 		{
 			delete (this->left);
-			this->left = NULL;
+			this->left = nullptr;
 		}
 		return true;
 	}
