@@ -64,7 +64,7 @@ bool Node::ErasePreviousNode() {
 
 		if ((this->Prev)->Prev)
 		{
-			(this->Prev)->Next = this;
+			((this->Prev)->Prev)->Next = this;
 			this->Prev = (this->Prev)->Prev;
 		}
 		else
@@ -85,7 +85,7 @@ bool Node::EraseNextNode() {
 
 		if ((this->Next)->Next)
 		{
-			(this->Next)->Prev = this;
+			((this->Next)->Next)->Prev = this;
 			this->Next = (this->Next)->Next;
 		}
 		else
